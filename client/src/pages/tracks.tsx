@@ -29,13 +29,15 @@ const TRACKS = gql(`
 
 const Tracks = () => {
   const { loading, error, data} = useQuery(TRACKS);
-  return <Layout grid>
-    <QueryResult error={error} loading={loading} data={data}>
-      {data?.tracksForHome?.map((track) => (
-        <TrackCard key={track.id} track={track} />
-      ))}
-    </QueryResult>
-    </Layout>;
+  return (
+    <Layout grid>
+      <QueryResult error={error} loading={loading} data={data}>
+        {data?.tracksForHome?.map((track, index) => (
+          <TrackCard key={track.id} track={track} />
+        ))}
+      </QueryResult>
+    </Layout>
+    )
 };
 
 export default Tracks;
